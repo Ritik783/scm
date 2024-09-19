@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is about page</h1>
+    <div th-replace="${isLogin} ? ~{Base :: (~{::section})} : ~{Base :: test}">
+    <section>
+        <h1>This is the dynamic content</h1>
+        <h1>user is logged in</h1>
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem perspiciatis eveniet fugit inventore architecto neque corporis quod repudiandae dicta dolorum?</div>
+        <button >hello jee</button>
+    </section>
+</div>
+</body>̥
+</html>

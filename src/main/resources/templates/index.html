@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>new file</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+function saveData() {
+        var name = $('#firstname').val();
+        var last = $('#lastname').val();
+        var data = {"name": name, "last": last};
+    $.ajax({
+        url: "http://localhost:8082/rest/demo",
+        dataType: "json",
+        type: "POST",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function(response) {
+            alert("Data has been saved");
+            document.getElementById("firstname").value = "";
+            document.getElementById("lastname").value = "";
+        },
+        error: function(xhr, status, error) {
+             console.log('not genrate error');
+        }
+    });
+}
+
+
+    </script>
+</head>
+<body>
+<label for="">Enter the name</label>
+<input type="text" id="firstname" name="firstname">
+<br>
+<label for="">Enter the last</firstnamelabel>
+<input type="text" id="lastname" name="lastname">
+
+<button id="btn" name="btn" onclick="saveData()">save</button>
+
+</body>
+
+</html>
