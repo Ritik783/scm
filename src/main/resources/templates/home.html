@@ -1,44 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::#tittle},~{::script})}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" data-th-href="@{'/CSS/output.css'}"/>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <title id="tittle">This is the home Page</title>
 </head>
 <body>
-<div class="bg-gray-200 w-1/2 p-4 flex flex-col justify-center text-center space-y-3 mx-auto mt-4">
-    <h1 class="text-3xl font-bold" data-th-text="${name}">This is for the dummy text</h1>
-
-    <p class="text-2xl text-gray-700">GitHub Repository : <a class="" th:href="${Github}">Visit Here Go To Github</a></p>
-
-    <p class="text-xl text-gray-700">LeetCode : <a th:href="${Leetcode}">Visit Here Go To Leetcode</a></p>
-
-    <p class="text-green-950">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
-    </p>
-    <div class="bg-center">
-        <button class="px-3 py-3 rounded bg-blue-900 text-white hover:bg-blue-600">Click here</button>
-    </div>
-    
-</div>
-<!-- flow bite content -->
-<!-- <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"> -->
-    <a href="#">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-    </a>
-    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        Read more
-        <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-        </svg>
-    </a>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+   <div id="content">
+       <h1>Home Page</h1>
+   </div>
+   <script>
+    console.log("Hello javascript");
+   </script>
+   <script>
+    console.log("Hello home page");
+   </script>
 </body>
 </html>
