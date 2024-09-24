@@ -1,5 +1,6 @@
  <!DOCTYPE html>
  <html 
+ class="dark"
  lang="en" th:fragment="parent(content,tittle,script)"
  xmlns:th="http://www.thymeleaf.org">
  <head>
@@ -11,24 +12,23 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
  </head>
- <body>
+ <body class="dark:bg-gray-900 text-white">
    <!-- Common Header -->
+   <div data-th-replace="~{Navbar::navbar}"></div>
 
 
+<!-- Main content -->
+   <div class="p-6">    
+      <section data-th-replace="${content}"></section>
+   </div>
 
 
-
-      <!-- Main content -->
-<section data-th-replace="${content}"></section>
 <!-- Common Footer -->
-
-
+<footer class="p-4">Footer: This is base Footer</footer>
 
 
 <!-- This for the flowbite content -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-    <th:block data-th-replace="${script}">
-
-    </th:block>
+    <th:block data-th-replace="${script}"></th:block>
  </body>
  </html>
