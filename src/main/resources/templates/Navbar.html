@@ -5,7 +5,7 @@
         <img src="https://cdn-icons-png.flaticon.com/128/8103/8103544.png" 
         class="h-7 shadow " 
         alt="Flowbite Logo">
-        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-red-500">SCM</span>
+         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">SCM</span>
     </a>
     <!-- End Brand Logo -->
 
@@ -15,10 +15,14 @@
             <span class="sr-only">Open main menu</span>
             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-          </svg>
+            </svg>
       </button>	
-        <a data-th-href="@{'/login'}" class="text-white bg-blue-700 hover:bg-blue-800 mx-2 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</a>
-        <a data-th-href="@{'/signup'}" class="text-white bg-bl hover:bg-gray-100 focus:ring-transparent focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign Up</a>
+        <button id="theme_cahnge_button" class="flex-row gap-10 px-5 rounded-lg dark:text-white hover:bg-slate-800 dark:bg-gray-700">
+          <!-- Dark theme button -->
+          <i class="fa-solid fa-circle-half-stroke"></i><span id="theme_text">Light</span>
+        </button>
+        <a data-th-href="@{'/login'}" class="text-white  bg-blue-700 hover:bg-blue-800 mx-2 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</a>
+        <a data-th-href="@{'/signup'}" class="text-white bg-blue-700 hover:bg-blue-800 mx-2 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 gap-6">Sign Up</a>
     </div>
    
     <!-- End  -->
