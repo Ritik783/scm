@@ -42,7 +42,7 @@ public class Contact {
     private String websiteLink;
     // getters and setters
     @ManyToOne
-    private User user;
+    private UserDetail user;
      @OneToMany(mappedBy = "contact",cascade = CascadeType.ALL,fetch = FetchType.EAGER,orphanRemoval = true)
     private List<SocialMediaLink> linkList = new ArrayList<>();
 }
