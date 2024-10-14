@@ -1,5 +1,8 @@
 package com.scm.Controller;
 
+import com.scm.helper.Message;
+import com.scm.helper.MessageType;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,7 +58,7 @@ public class PageController {
         return "Signup";
     }
     @RequestMapping(value="/do-register", method=RequestMethod.POST)
-    public String doRegister(@ModelAttribute UserForm form){
+    public String doRegister(@ModelAttribute UserForm form, HttpSession session){
         // fetch form data
         // UserDetail user = UserDetail.builder()
         // .name(form.getName())
@@ -75,6 +78,9 @@ public class PageController {
         user.setProfilePic(""); 
         user.setProvider(Provider.GITHUB);
         userService.saveuser(user);
+
+        Message registrationSuccessfully = Message.builder().content("Registration Successfully").messageType(MessageType.Green).build();
+        session.setAttribute("message",registrationSuccessfully);
         // validate form data
         // save form data
         // message = successfull
