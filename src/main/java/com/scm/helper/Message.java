@@ -11,5 +11,5 @@ import lombok.*;
 public class Message {
     private String content;
     @Builder.Default
-    private MessageType messageType = MessageType.Blue;
+    private MessageType messageType=MessageType.Blue;
 }

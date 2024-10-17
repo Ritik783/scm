@@ -37,4 +37,8 @@ function getTheme(){
     }
 }
 
+function showAlertDiv(){
+    console.log("helllo jee");
+}
+
 // change theme work end

@@ -3,9 +3,11 @@ package com.scm.Controller;
 import com.scm.helper.Message;
 import com.scm.helper.MessageType;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -57,18 +59,13 @@ public class PageController {
         model.addAttribute("userform", userform);
         return "Signup";
     }
-    @RequestMapping(value="/do-register", method=RequestMethod.POST)
-    public String doRegister(@ModelAttribute UserForm form, HttpSession session){
+    @RequestMapping(value="/doRegister", method=RequestMethod.POST)
+    public String doRegister(@Valid  @ModelAttribute UserForm form, BindingResult bindingResult, HttpSession session){
+        // validate form data
+        if(bindingResult.hasErrors()){
+            return "signup";
+        }
         // fetch form data
-        // UserDetail user = UserDetail.builder()
-        // .name(form.getName())
-        // .email(form.getEmail())
-        // .password(form.getPassword())
-        // .about(form.getAbout())
-        // .phoneNumber(form.getPhoneNumber())
-        // .profilePic("")
-        // .provider(Provider.GITHUB)    
-        // .build();
         UserDetail user = new UserDetail();
         user.setName(form.getName());
         user.setEmail(form.getEmail());
@@ -78,11 +75,10 @@ public class PageController {
         user.setProfilePic(""); 
         user.setProvider(Provider.GITHUB);
         userService.saveuser(user);
+        Message printMessage =
+                Message.builder().content("Registration Successfully").messageType(MessageType.Blue).build();
+        session.setAttribute("message",printMessage);
 
-        Message registrationSuccessfully = Message.builder().content("Registration Successfully").messageType(MessageType.Green).build();
-        session.setAttribute("message",registrationSuccessfully);
-        // validate form data
-        // save form data
         // message = successfull
         // redirect
         return "redirect:/signup";
