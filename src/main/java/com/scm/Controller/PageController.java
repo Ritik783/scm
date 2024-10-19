@@ -55,15 +55,15 @@ public class PageController {
 
     @RequestMapping("/signup")
     public String signupPage(Model model) {
-        UserForm userform = new UserForm();
-        model.addAttribute("userform", userform);
+        model.addAttribute("userform", new UserForm());
         return "Signup";
     }
     @RequestMapping(value="/doRegister", method=RequestMethod.POST)
-    public String doRegister(@Valid  @ModelAttribute UserForm form, BindingResult bindingResult, HttpSession session){
+    public String doRegister(@Valid  @ModelAttribute("userform") UserForm form, BindingResult result,
+                             HttpSession session){
         // validate form data
-        if(bindingResult.hasErrors()){
-            return "signup";
+        if(result.hasErrors()){
+            return "Signup";
         }
         // fetch form data
         UserDetail user = new UserDetail();
