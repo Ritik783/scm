@@ -33,8 +33,7 @@ public class SpringConfig {
     @Bean
     public AuthenticationProvider authencationProvider(){
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        UserDetailsService userDetailService;
-//        user detail service ka object
+        //        user detail service ka object
         daoAuthenticationProvider.setUserDetailsService(securityUserDetailService);
 //        password ka object
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
@@ -49,7 +48,16 @@ public class SpringConfig {
             autherize.anyRequest().permitAll();
         });
 //        default form login
-        httpSecurity.formLogin(Customizer.withDefaults());
+        /*httpSecurity.formLogin(Customizer.withDefaults());*/
+//        with customize form login
+        httpSecurity.formLogin(formLogin->{
+           formLogin.loginPage("/login");
+           formLogin.successForwardUrl("/user/dashboard");
+           formLogin.failureForwardUrl("/login?error=true");
+           formLogin.loginProcessingUrl("/authenticate");
+           formLogin.usernameParameter("email");
+           formLogin.passwordParameter("password");
+        });
         return httpSecurity.build();
     }
     @Bean

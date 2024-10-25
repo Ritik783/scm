@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,25 +22,30 @@ public class PageController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/")
+    public String homePage() {
+        return "redirect:home";
+    }
 
     @RequestMapping("/home")
-    public String homeController(Model model){
+    public String homeController(Model model) {
         System.out.println("this is the home");
         // model.addAttribute("name","Technology");
         // model.addAttribute("Github","https://github.com/Ritik783/CodeClause_Product_landing_page");
         // model.addAttribute("Leetcode","https://leetcode.com/u/ritik78/");
         return "home";
     }
-    // about 
+
+    // about
     @RequestMapping("/about")
-    public String aboutPagelayout(Model model){
-        model.addAttribute("isLogin",false);
+    public String aboutPagelayout(Model model) {
+        model.addAttribute("isLogin", false);
         return "about";
     }
 
     // about service
     @RequestMapping("/services")
-    public String servicePage(){
+    public String servicePage() {
         return "services";
     }
 
@@ -47,7 +53,7 @@ public class PageController {
     public String contactPage(Model model) {
         return "Contact";
     }
-    
+
     @RequestMapping("/login")
     public String loginPage(Model model) {
         return "Login";
@@ -58,11 +64,12 @@ public class PageController {
         model.addAttribute("userform", new UserForm());
         return "Signup";
     }
-    @RequestMapping(value="/doRegister", method=RequestMethod.POST)
-    public String doRegister(@Valid  @ModelAttribute("userform") UserForm form, BindingResult result,
-                             HttpSession session){
+
+    @RequestMapping(value = "/doRegister", method = RequestMethod.POST)
+    public String doRegister(@Valid @ModelAttribute("userform") UserForm form, BindingResult result,
+                             HttpSession session) {
         // validate form data
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return "Signup";
         }
         // fetch form data
@@ -72,12 +79,12 @@ public class PageController {
         user.setPassword(form.getPassword());
         user.setAbout(form.getAbout());
         user.setPhoneNumber(form.getPhoneNumber());
-        user.setProfilePic(""); 
+        user.setProfilePic("");
         user.setProvider(Provider.GITHUB);
         userService.saveuser(user);
         Message printMessage =
                 Message.builder().content("Registration Successfully").messageType(MessageType.Blue).build();
-        session.setAttribute("message",printMessage);
+        session.setAttribute("message", printMessage);
 
         // message = successfull
         // redirect
